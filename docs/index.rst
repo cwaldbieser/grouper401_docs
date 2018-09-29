@@ -9,8 +9,14 @@ Welcome to GTE401 Docs's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
-
+   :glob:
+   
+   intro
+   401.1
+   401.2
+   401.3
+   401.4
+   appendix
 
 Indices and tables
 ==================
