@@ -2,4 +2,50 @@
 401.3 Board Effect Provisioning
 ===============================
 
+-------------------
+Learning Objectives
+-------------------
 
+
+--------------
+Lab Components
+--------------
+
+* Shibboleth IdP
+* InCommon Federation
+* Grouper
+* RabbitMQ
+* Grouper ESBChangeLog Consumer
+* `Grouper Deployment Guide`_
+
+--------
+Overview
+--------
+
+We have been asked to deploy a SaaS application called Board Effect. The
+service is already an InCommon member and honors an `eduPersonEntitlement`
+for "front door" access. Permission management within the application is
+centered around "work rooms".  Each work room provide access to specific
+documents, chat, mailing lists, etc.  The system will be used by trustees,
+executives, and various committee members.
+
+Thankfully the service is an InCommon member and using `eduPersonEntitlement`
+values.  However, it turns out users still need to have accounts provisioned
+in order to get access. We will need two different kinds of policy groups.
+The first, the account policy group, will be mapped to an `eduPersonEntitlement`
+value and also be used for provisioning accounts.  The second type,
+authorization groups, will provide subject to role mapping, and are mapped
+to work rooms created in Board Effect. This is an example of access control
+model 3 described in the `Grouper Deployment Guide`_.
+
+----------------
+Exercise 401.3.1
+----------------
+
+*Create a application policy folder and groups*
+
+Rather than create the basic structure manually, use a
+:ref:`GSH script <apdx-401.3.1-app-skeleton>`.
+
+
+.. _Grouper Deployment Guide: https://spaces.at.internet2.edu/display/Grouper/Grouper+Deployment+Guide+Work+-TIER+Program
