@@ -137,4 +137,22 @@ who have access to sensitive data in Banner" part of the policy.
 #. Use :ref:`SQL <apdx-401.2.5-future-memberships-query>` to view memberships
    enabled in the future.
 
+That’s was easy! Except-- the list is not quite right. Some faculty were
+included for some reason. Help desk calling!  Need to remove faculty members.
+
+
+----------------
+Exercise 401.2.6
+----------------
+
+*Update policy to include all Banner users except faculty*
+
+#. Create `app:mfa:ref:BannerUsersMinusFaculty`.
+#. Edit this reference group to make it composite of `NonFacultyBannerINB`
+   minus `ref:faculty`.
+
+The new policy is in place and the pilot continues to expand. The next phase
+calls for any faculty, staff, or student who are not already required to be
+able to opt-in or out of MFA at their discretion. 
+
 
