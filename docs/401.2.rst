@@ -68,4 +68,20 @@ There are 2 steps to accomplish this:
         :lines: 92-100
         :caption: grouper-loader.properties
         :name: 401.2.2-pspng-groupofnames
+        :linenos:
+
+----------------
+Exercise 401.2.3
+----------------
+
+*Configure Shibboleth IdP to honor MFA enabled ePE value and assert REFEDS
+MFA profile*
+
+
+.. literalinclude:: examples/401.2.3-mfa-authn-config.xml
+   :language: xml
+   :emphasize-lines: 25
+   :lines: 53-86
+   :caption: mfa-authn-config.xml
+   :linenos:
 

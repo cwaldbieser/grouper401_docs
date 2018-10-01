@@ -23,6 +23,7 @@ At this point you can paste in the following script:
 
 .. code-block:: groovy
    :emphasize-lines: 1,3
+   :linenos:
 
    numDays = 180;
    actAs = SubjectFinder.findRootSubject();
@@ -45,6 +46,7 @@ At this point you can paste in the following script:
 --------------------------------------
 
 .. code-block:: sql
+   :linenos:
 
    SELECT 
        gpm.SUBJECT_ID, 
