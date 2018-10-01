@@ -35,7 +35,6 @@ may opt-in. During the initial pilot phase, select cohorts will be asked to
 volunteer. Your mission, should you choose to accept, is to create and evolve
 the digital policy necessary to achieve the project goals.
 
-
 ----------------
 Exercise 401.2.1
 ----------------
@@ -46,4 +45,27 @@ Exercise 401.2.1
 #. Create `app:mfa:ref:pilot`.  This reference group is an access control
    list (ACL) as opposed to ABAC policy.
 #. Add `app:mfa:ref:pilot` to `app:mfa:mfa_enabled_allow`.
+
+
+----------------
+Exercise 401.2.2
+----------------
+
+*Establish an eduPersonEntitlement value to signal "MFA enabled"*
+
+We will assign a unique `eduPersonEntitilement` (ePE) value to LDAP accounts
+that are MFA enabled.  We choose the value 
+**http://tier.internet2.edu/mfa/enabled**.
+
+There are 2 steps to accomplish this:
+
+#. Assign PSPNG attribute to `app:mfa:mfa_enabled` with a value of
+   `pspng_entitlements`.
+#. Configure PSPNG to provision this attribute.
+
+   .. literalinclude:: examples/401.2.2-pspng-config.proprties
+        :language: properties
+        :lines: 92-100
+        :caption: grouper-loader.properties
+        :name: 401.2.2-pspng-groupofnames
 

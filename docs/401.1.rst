@@ -121,7 +121,7 @@ Exercise 401.1.3
         :language: properties
         :lines: 72-
         :caption: grouper-loader.properties
-        :name: pspng-groupofnames
+        :name: 401.1.3-pspng-groupofnames
 
 #. Open a ticket to switch VPN config to use vpn_authorized.
 #. Bask in the glow of TIER IAM goodness...
