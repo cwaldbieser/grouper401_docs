@@ -85,3 +85,27 @@ Use intersect composite groups to gain insight into types of cohorts
     * Contractors, sponsored accounts, etc
     * Others
 
+----------------
+Exercise 401.1.2
+----------------
+
+*State the natural language policy and create VPN application group and digital
+policy.*
+
+#. Natural language policy: "Faculty, staff and exceptions (some students,
+   contractors, etc.)"
+#. Construct `app:vpn:vpn_authorized|allow|deny` policy groups from appropriate
+   reference groups.
+
+   * `ref:faculty`
+   * `ref:student`
+   * `app:vpn:ref:vpn_adhoc`
+
+#. Compare counts between ldap vpn group and `app:vpn:vpn_authorized`.
+   `vpn_authorized` should be different from the legacy group in the following
+   ways:
+
+   * only active accounts
+   * only current exceptions (none!)
+
+
