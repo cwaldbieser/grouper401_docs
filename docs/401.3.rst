@@ -48,4 +48,31 @@ Rather than create the basic structure manually, use a
 :ref:`GSH script <apdx-401.3.1-app-skeleton>`.
 
 
+----------------
+Exercise 401.3.2
+----------------
+
+*Workrooms (i.e. authorization groups) can be updated via the Board Effect
+REST API.  Create Grouper authorization groups to manage those.*
+
+A new workroom call Committee on Finance has been created in Board Effect.
+Need to create authorization group in grouper and configure provisioning.
+
+#. Create `app:boardeffect:wr_cmt_fin_authorized|allow|deny`.
+#. Configure grouperESB to send membership changes to rabbitMQ exchange.
+
+   .. literalinclude:: examples/401.3.2-grouper-loader.proprties
+        :language: properties
+        :lines: 102-118
+        :caption: grouper-loader.properties
+        :linenos:
+
+   .. literalinclude:: examples/401.3.2-grouper.client.proprties
+        :language: properties
+        :lines: 61-112
+        :caption: grouper.client.properties
+        :linenos:
+
+#. Write provisioner component to read rabbitMQ and update BoardEffect via REST API.
+
 .. _Grouper Deployment Guide: https://spaces.at.internet2.edu/display/Grouper/Grouper+Deployment+Guide+Work+-TIER+Program
