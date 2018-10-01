@@ -134,3 +134,89 @@ Exercise 401.1.3
         * No way to distinguish different exceptions.
         * Who is responsible for lifecycle, attestation, etc.?
 
+----------------
+Exercise 401.1.4
+----------------
+
+*Implement distributed exception management.*
+
+We initially added exceptions to single application reference group. This a
+good step, but we still lack an easy way to know the "who and why" of
+exceptions. IAM still also getting tickets to add people. In some case, the
+expiration is known and added, but most are a one way street-- back to old
+practices. How can we do better?
+
+"""""""""""""""""""""""""""""
+Organize Exceptions to Policy
+"""""""""""""""""""""""""""""
+
+Each policy exception is represented by an application specific reference group.
+
+#. Create `app:vpn:ref:vpn_consultants`.  This ACL will be managed by the IAM
+   team.
+#. Create `app:vpn:ref:vpn_ajohnson409`.  Management of this ACL will be
+   delegated to a professor.
+ 
++++++++++++++++++++++++++++++++++++
+Professor Johnson's Special Project
++++++++++++++++++++++++++++++++++++
+
+Professor Johnson (ajohnson409) runs a special project that includes various online
+resources that can only be accessed from the VPN.  The professor should be able to
+control who is allowed to have VPN access for the purpose of accessing his
+project's resources.
+
+ACL `app:vpn:ref:vpn_ajohnson409` represents subjects that will access resources
+related to Professor Johnson's special project.  In order to delegate management
+of this ACL to the professor, we must create a security group and grant it
+appropriate permissions:
+
+#. Create `app:vpn:etc:vpn_ajohnson409_mgr`.
+#. Add subject `ajohnson409` to this security group. 
+#. Grant *UPDATE* and *READ* access on the `...:ajohnson409` access control
+   list to this security group.
+#. In a private browser window, log into the GTE was account `ajohnson409`, 
+   password "password".  You should be able to add and remove members from the
+   `vpn_ajohnson409` ACL.
+
+""""""""""""""""""""""
+Put Limits on Policies
+""""""""""""""""""""""
+
+It is the IAM team's responsibility to make sure that VPN access is granted to the
+correct subjects.  Putting some limits in place can help make sure improper
+access is not granted.  Attestation makes sure that access which was granted
+in the past is still appropriate.
+
+#. Create `ref:iam:global_deny`.  This reference group represents a broad cohort
+   of subjects that should not be granted access to most policies.  Subjects
+   that fall into this category may be:
+
+   * Termed "with cause"
+   * Deceased
+   * Other reasons
+
+#. Add `ref:iam:global_deny` to the `app:vpn:vpn_deny` policy.
+#. Add attestation requirements to the `app:vpn:ref:vpn_ajohnson409` ACL.
+
+    * Create attestation requirements (30 days).
+    * Review notification settings.
+    * View :guilabel:`home` -> :guilabel:`misc` -> :guilabel:`attestation settings`.
+    * Log in as `ajohnson409` and attest! 
+    * View audit log to see who attested group.
+
+#. Add automatic age-off / lifecycle - exceptions only good for 180 days.
+   There are 2 techniques:
+
+   * Add member, edit membership, add membership end date.
+   * Better approach, use grouper rule to automatically add end date to
+     members.  See :ref:`the appendix <apdx-401.1.4-auto-end-date>` for
+     details.
+
+#. Use Grouper 2.4 affiliation-based deprovisioning.
+
+All access to VPN is now traceable to natural language policy and known
+exceptions! Policy is enforced automatically and kept in sync with changing
+subject attributes. Exceptions are known and managed with a defined
+attestation lifecycle. VPN policy participates in the global deny policy.
+
