@@ -67,3 +67,27 @@ At this point you can paste in the following script:
    ;
 
 
+.. _apdx-401.2.5-future-memberships-query:
+
+--------------------------------
+401.2.5 Future Memberships Query
+--------------------------------
+
+.. code-block:: sql
+   :linenos:
+
+   SELECT 
+       ggv.name,
+       FROM_UNIXTIME(gmav.IMMEDIATE_MSHIP_ENABLED_TIME / 1000) enabled_time,
+       CASE
+           WHEN gm.subject_type = 'group' THEN gm.subject_identifier0
+           ELSE gm.subject_id
+       END member
+   FROM `grouper_memberships_all_v` gmav
+       INNER JOIN grouper_groups_v ggv
+           ON gmav.OWNER_GROUP_ID = ggv.GROUP_ID
+       INNER JOIN grouper_members gm
+           ON gmav.member_id = gm.id
+   WHERE gmav.IMMEDIATE_MSHIP_ENABLED_TIME IS NOT NULL
+   ;
+

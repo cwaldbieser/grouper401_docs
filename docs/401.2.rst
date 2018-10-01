@@ -116,4 +116,25 @@ Exercise 401.2.4
    * Import the list as a temporary app-specific reference group.
    * Add this reference group to `mfa_enabled_allow`.
 
+The MFA pilot is going well when the institution is hit with some direct deposit
+fraud. Mandate comes from leadership to add some required cohorts. The new
+policy is "any non-faculty who has access to sensitive data (i.e. Banner
+INB) must have mfa enabled". The new policy should be active within two days.
+
+
+----------------
+Exercise 401.2.5
+----------------
+
+*Update policy to include all non-faculty employees who have access to sensitive data in Banner*
+
+The Banner support team provides a list of NetIDs to satisfy the "non-faculty
+who have access to sensitive data in Banner" part of the policy.
+
+#. Create `app:mfa:ref:NonFacultyBannerINB` and import list of NetIDs.
+#. Add `NonFacultyBannerINB` to `app:mfa:mfa_enabled_allow`.  Edit the start
+   date for this group to be in the future.
+#. Use :ref:`SQL <apdx-401.2.5-future-memberships-query>` to view memberships
+   enabled in the future.
+
 
