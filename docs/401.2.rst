@@ -35,3 +35,15 @@ may opt-in. During the initial pilot phase, select cohorts will be asked to
 volunteer. Your mission, should you choose to accept, is to create and evolve
 the digital policy necessary to achieve the project goals.
 
+
+----------------
+Exercise 401.2.1
+----------------
+
+*Create initial MFA application folder set and policy in Grouper*
+
+#. Create `app:mfa:mfa_enabled|allow|deny`.
+#. Create `app:mfa:ref:pilot`.  This reference group is an access control
+   list (ACL) as opposed to ABAC policy.
+#. Add `app:mfa:ref:pilot` to `app:mfa:mfa_enabled_allow`.
+
