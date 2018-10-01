@@ -1,3 +1,37 @@
 ===========================
 401.2 MFA Policy Governance
 ===========================
+
+-------------------
+Learning Objectives
+-------------------
+
+* Use Grouper policy to control Shibboleth MFA behavior
+* Create `eduPersonEntitlement` value to represent desired MFA behavior
+* Evolve digital policy to match changing natural language policy
+
+--------------
+Lab Components
+--------------
+
+* Shibboleth
+* Grouper
+* PSPNG
+* OpenLDAP
+* eduPerson schema - `eduPersonEntitlement`
+* REFEDS MFA profile
+* `Grouper Deployment Guide <https://spaces.at.internet2.edu/display/Grouper/Grouper+Deployment+Guide+Work+-TIER+Program>`_
+
+--------
+Overview
+--------
+
+Your institution is deploying multi-factor authentication (MFA). The first
+target application is Web SSO. Any account enabled for MFA will experience
+common MFA behaviors sufficient to assert the REFEDS MFA profile during 
+WebSSO authentication. The project plan calls for an initial pilot phase,
+followed by a number phases where different cohorts will be required or
+may opt-in. During the initial pilot phase, select cohorts will be asked to
+volunteer. Your mission, should you choose to accept, is to create and evolve
+the digital policy necessary to achieve the project goals.
+

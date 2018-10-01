@@ -18,7 +18,7 @@ Lab Components
 * Grouper
 * PSPNG
 * OpenLDAP
-* Grouper Deployment Guide
+* `Grouper Deployment Guide <https://spaces.at.internet2.edu/display/Grouper/Grouper+Deployment+Guide+Work+-TIER+Program>`_
 
 --------
 Overview
@@ -234,3 +234,15 @@ Exercise 401.1.5
    :ref:`PIT query <apdx-401.1.5-pit-query>`, Go!
 
 .. _apdx-401.1.5-pit-query:
+
+----------------
+Exercise 401.1.6
+----------------
+
+*CISO wants to know if anyone on this list of NetIDs has access to the VPN? And
+why?*
+
+#. Import list to a test group.
+#. Intersect with `vpn_authorized`.
+#. Trace membership to determine what level of access and why.
+
