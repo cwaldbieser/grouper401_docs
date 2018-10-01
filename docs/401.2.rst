@@ -156,3 +156,75 @@ calls for any faculty, staff, or student who are not already required to be
 able to opt-in or out of MFA at their discretion. 
 
 
+----------------
+Exercise 401.2.7
+----------------
+
+*Allow any faculty, staff, or student to opt-in/out if they are not already
+required by other policy*
+
+#. Create `app:mfa:ref:mfa_opt_in`, an opt-in group for individuals who want to
+   join or leave the service.
+#. Add `mfa_opt_in` to `mfa_enabled_allow`.
+#. Create a new grouper security group, `app:mfa:etc:mfa_opt_in_access|allow|deny`.
+#. Add faculty, staff, and student reference groups to
+   `app:mfa:etc:mfa_opt_in_access_allow`.
+#. Add `app:mfa:mfa_required` to `mfa_opt_in_access_deny`.
+#. Configure `mfa_opt_in` privileges to grant `mfa_opt_in_access` *OptIn* and
+   *OptOut* rights.
+
+Now, subject **awhite318** (Amber White) can log in and see the
+`mfa_opt_in` group.  This subject is able to join or leave at will.
+
+"""""""""""""""""""""""""""""
+Improving the User Experience
+"""""""""""""""""""""""""""""
+
+The Grouper UI is sufficient for simple user interaction, but not a great user
+experience. Another approach is to build a small, web-based application to
+manage membership directly or via database and grouper loader.
+
+* Web application maintains a database of NetIDs that have opted in.
+* Grouper loader job imports opt-in members into a reerence group.
+* The web app needs to know what NetIDs are required to use MFA and are
+  therefore ineligible to use the web app.  Grouper can provision a 2nd
+  ePE, `http://tier.internet2.edu/mfa/required`.
+
+Working great!  But, accounts that were put in early bypass for some reason
+now can't opt-in.  It looks like they enabled it, but they get filtered out of
+`mfa_enabled` because of the bypass membership.  Removing those accounts from
+bypass puts them in `mfa_enabled`.
+
+----------------
+Exercise 401.2.8
+----------------
+
+*Refactor `...:ref:bypass` to accommodate users who opt-in to MFA*
+
+#. Refactor `...:ref:bypass` to  `...:basis:mfa_bypass`.
+#. Create new `...:ref:mfa_bypass_not_opt_in` composite 
+   (`...:basis:mfa_bypass` - `...:ref:mfa_opt_in`).
+#. Add `...:ref:mfa_bypass_not_opt_in` to `app:mfa:mfa_enabled_deny`.
+
+Another way might be to use Grouper rules.
+
+Pilot has been a success. Leadership wants all remaining faculty, staff,
+and students to be enabled by policy.
+
+----------------
+Exercise 401.2.9
+----------------
+
+*Add all remaining faculty, staff, and students to policy*
+
+#. Add appropriate reference groups to allow policy.
+#. Clean up intermediate policy and application reference groups.
+
+   * Add `faculty`, `staff`, and `student` reference groups to policy.
+   * Remove app specific reference and basis groups.
+
+We should now have a fairly clean app policy folder.  We were able to update
+digital policy without affecting service.
+
+Kick back and have a margarita!
+
