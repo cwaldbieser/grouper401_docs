@@ -61,18 +61,46 @@ Need to create authorization group in grouper and configure provisioning.
 #. Create `app:boardeffect:wr_cmt_fin_authorized|allow|deny`.
 #. Configure grouperESB to send membership changes to rabbitMQ exchange.
 
-   .. literalinclude:: examples/401.3.2-grouper-loader.proprties
+   .. literalinclude:: examples/401.3.2-grouper-loader.properties
         :language: properties
         :lines: 102-118
         :caption: grouper-loader.properties
         :linenos:
 
-   .. literalinclude:: examples/401.3.2-grouper.client.proprties
+   .. literalinclude:: examples/401.3.2-grouper.client.properties
         :language: properties
         :lines: 61-112
         :caption: grouper.client.properties
         :linenos:
 
 #. Write provisioner component to read rabbitMQ and update BoardEffect via REST API.
+
+   .. note::
+
+        This step is what logically should happen next to process the messages.
+        You aren't expected to actually accomplish this step during the lab.
+
+----------------
+Exercise 401.3.3
+----------------
+
+*Board Effect account provisioning*
+
+#. Create `app:boardeffect:boardeffect_authorized`.
+#. Add `...:wr_cmt_fin_authorized` to `boardeffect_authorized_allow`.
+#. Configure PSPNG to write `eduPersonEntitlement` value
+   **https://college.boardeffect.com/** to LDAP and release via Shibboleth only
+   for Boardeffect.
+
+   .. literalinclude:: examples/401.3.2-grouper-loader.properties
+        :language: properties
+        :lines: 92-100
+        :emphasize-lines: 6
+        :caption: grouper-loader.properties
+        :linenos:
+
+Subject to role mapping in place and provisioners working, but how do we get
+reference groups for committees? Ann in President’s Office knows.
+
 
 .. _Grouper Deployment Guide: https://spaces.at.internet2.edu/display/Grouper/Grouper+Deployment+Guide+Work+-TIER+Program

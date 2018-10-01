@@ -63,7 +63,7 @@ There are 2 steps to accomplish this:
    `pspng_entitlements`.
 #. Configure PSPNG to provision this attribute.
 
-   .. literalinclude:: examples/401.2.2-pspng-config.proprties
+   .. literalinclude:: examples/401.2.2-pspng-config.properties
         :language: properties
         :lines: 92-100
         :caption: grouper-loader.properties
