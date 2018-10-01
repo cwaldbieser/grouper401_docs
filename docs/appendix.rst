@@ -38,3 +38,30 @@ At this point you can paste in the following script:
    attribValueDelegate.assignValue(RuleUtils.ruleThenEnumArg0Name(), numDays.toString());
    attribValueDelegate.assignValue(RuleUtils.ruleThenEnumArg1Name(), "T");
 
+.. _apdx-401.1.5-pit-query:
+
+--------------------------------------
+401.1.5 Point-in-Time Membership Query
+--------------------------------------
+
+.. code-block:: sql
+
+   SELECT 
+       gpm.SUBJECT_ID, 
+       gpg.NAME, 
+       FROM_UNIXTIME(gpmav.MEMBERSHIP_START_TIME / 1000000) start_time, 
+       FROM_UNIXTIME(gpmav.MEMBERSHIP_END_TIME / 1000000) end_time 
+   FROM grouper_pit_memberships_all_v gpmav 
+       INNER JOIN grouper_pit_groups gpg 
+           ON gpmav.owner_group_id = gpg.id 
+       INNER JOIN grouper_pit_members gpm 
+           ON gpmav.MEMBER_ID = gpm.id 
+       INNER JOIN grouper_pit_fields gpf 
+           ON gpmav.field_id = gpf.id
+   WHERE gpg.name = 'app:vpn:vpn_authorized' 
+   AND gpm.subject_type = 'person'
+   AND gpf.name = 'members'
+   ORDER BY gpmav.MEMBERSHIP_START_TIME DESC 
+   ;
+
+

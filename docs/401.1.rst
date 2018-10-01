@@ -220,3 +220,17 @@ exceptions! Policy is enforced automatically and kept in sync with changing
 subject attributes. Exceptions are known and managed with a defined
 attestation lifecycle. VPN policy participates in the global deny policy.
 
+----------------
+Exercise 401.1.5
+----------------
+
+*CISO is working on a investigation and wants to know if this particular NetID
+"xxxxx" has access to the VPN now or in the past 90 days?*
+
+#. Navigate to `apps:vpn:vpn_authorized`.
+#. Search for so-and-so.
+#. Open up phpMyAdmin (https://localhost:8443/phpmyadmin/)
+#. Open Views, Go to SQL tab, paste in
+   :ref:`PIT query <apdx-401.1.5-pit-query>`, Go!
+
+.. _apdx-401.1.5-pit-query:
