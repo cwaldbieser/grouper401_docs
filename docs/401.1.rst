@@ -108,4 +108,29 @@ policy.*
    * only active accounts
    * only current exceptions (none!)
 
+----------------
+Exercise 401.1.3
+----------------
+
+*Export `vpn_authorized` to LDAP for use with new VPN config.*
+
+#. Mark/config `vpn_authorized` to export to LDAP.  The PSPNG needs to be
+   configured to provision group members. 
+
+   .. literalinclude:: examples/401.1.3-pspng-config.proprties
+        :language: properties
+        :lines: 72-
+        :caption: grouper-loader.properties
+        :name: pspng-groupofnames
+
+#. Open a ticket to switch VPN config to use vpn_authorized.
+#. Bask in the glow of TIER IAM goodness...
+
+   * Automatic provisioning/deprovisioning for faculty and staff.
+   * Natural language policy - clear and visible.
+   * Exceptions management:
+
+        * Still dealing with tickets to add and remove subjects (well at least to add!).
+        * No way to distinguish different exceptions.
+        * Who is responsible for lifecycle, attestation, etc.?
 
