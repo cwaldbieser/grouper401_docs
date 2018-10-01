@@ -2,4 +2,86 @@
 401.1 VPN Access Control
 ========================
 
+-------------------
+Learning Objectives
+-------------------
+
+* Use group math and reference groups to analyze legacy authorization groups
+* Translate natural language policy into Grouper digital policy
+* Implement distributed access management
+* Use Grouper to answer access management questions such as “who” and “why”
+
+--------------
+Lab Components
+--------------
+
+* Grouper
+* PSPNG
+* OpenLDAP
+* Grouper Deployment Guide
+
+--------
+Overview
+--------
+
+VPN access is currently controlled by an LDAP group. You are not exactly sure
+who is in the group or what the policy is, but have a general notion of a
+natural language policy as all active faculty and staff, plus exceptions.
+However, people have been added to the VPN ldap group mostly by hand over many
+years with little to no lifecycle management in place. There is no easy way to
+determine who should or should not be in the group. We just had a major breach
+which was facilitated by access to the VPN. The compromised account used in the
+breach was given to a former consultant and was never deprovisioned. CISO is
+coming down hard on us to clean up our act!
+
+----------------
+Exercise 401.1.1
+----------------
+
+*Gain insight into who exactly has access to the VPN based on the cohorts found
+in the legacy VPN authorization group.*
+
+""""""""""""""""""""""
+Import Legacy VPN Data
+""""""""""""""""""""""
+
+* Create a loader job from the existing ldap vpn authorization group.
+* Make sure grouper group counts matches ldap group counts.
+* First thing to notice is you can eyeball the types of subjects in Grouper UI.
+
+.. note::
+    For small enough groups this might be sufficient, but our VPN group has
+    hundreds of subjects.
+
+"""""""""""""""""""""""""""""""
+Use Set Operations for Analysis
+"""""""""""""""""""""""""""""""
+
+Use intersect composite groups to gain insight into types of cohorts
+
+* `test:vpn:vpn_faculty`: Intersect `ref:faculty` with `test:vpn:vpn_legacy`.
+  This yields faculty count (almost) - aha! This explains help desk calls!
+
+* `test:vpn:vpn_employees`: Intersect `ref:staff` with `test:vpn:vpn_legacy`.
+  This yields staff count (again almost!)
+
+* `test:vpn:vpn_students`: Intersect `ref:students` with `test:vpn:vpn_legacy`.
+  This yields a small count - aha!
+
+* Totals don’t add up...so we have other cohorts too. Who are they?
+
+* Set up composite group to filter out "other cohorts".
+
+* `test:vpn:other_cohorts` = `...:vpn_legacy` - (`...:vpn_faculty` + 
+  `...:vpn_employees` + `...:vpn_students`)
+
+  * create `...:vpn_facstaffstudent` (include `...:vpn_faculty`,
+       `...:vpn_employees`, `...:vpn_students`)
+  * `...:other_cohorts` = `...:vpn_legacy` - `...:vpn_facstaffstudent`
+
+* "Other cohorts" is a relatively small number ... can now eyeball those.
+
+    * fac/staff that are now longer active
+    * Contractors, sponsored accounts, etc
+    * Others
 
