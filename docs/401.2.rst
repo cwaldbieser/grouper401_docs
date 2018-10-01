@@ -77,6 +77,12 @@ Exercise 401.2.3
 *Configure Shibboleth IdP to honor MFA enabled ePE value and assert REFEDS
 MFA profile*
 
+.. literalinclude:: examples/401.2.3-general-authn.xml
+   :language: xml
+   :emphasize-lines: 14, 16
+   :lines: 112-130
+   :caption: mfa-authn-config.xml
+   :linenos:
 
 .. literalinclude:: examples/401.2.3-mfa-authn-config.xml
    :language: xml
@@ -84,4 +90,8 @@ MFA profile*
    :lines: 53-86
    :caption: mfa-authn-config.xml
    :linenos:
+
+Now have a working MFA policy. Adding new volunteers to the pilot is as easy as
+adding members to the pilot group. The next rollout phase calls for onboarding
+select departments, but allow for exceptions.
 
