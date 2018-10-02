@@ -9,7 +9,7 @@ Learning Objectives
 * Use group math and reference groups to analyze legacy authorization groups
 * Translate natural language policy into Grouper digital policy
 * Implement distributed access management
-* Use Grouper to answer access management questions such as “who” and “why”
+* Use Grouper to answer access management questions such as "who" and "why"
 
 --------------
 Lab Components
@@ -162,7 +162,7 @@ Each policy exception is represented by an application specific reference group.
 Professor Johnson's Special Project
 +++++++++++++++++++++++++++++++++++
 
-Professor Johnson (ajohnson409) runs a special project that includes various online
+Professor Johnson (**ajohnson409**) runs a special project that includes various online
 resources that can only be accessed from the VPN.  The professor should be able to
 control who is allowed to have VPN access for the purpose of accessing his
 project's resources.
