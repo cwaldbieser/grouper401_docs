@@ -143,6 +143,35 @@ committee work group.
 This works great for specific assistants, but there are also general helpers
 who need access to all workrooms *temporarily* during board meetings.
 
+#. Create app specific ref group `app:boardeffect:ref:workroom_helpers`.
+#. Run :ref:`GSH script <apdx-401.3.5-temp-access>` to add age off rule
+   to `workroom_helpers`.
+#. Add `workroom_helpers` to all workroom allow groups.
+
+Workrooms created in Boardeffect.  Grouper policy groups map to workroom, and
+are kept up to date via Grouper provisioners.  We could create workrooms
+automatically based on policy group creation-- exercise left to student at home.
+
+----------------
+Exercise 401.3.6
+----------------
+
+*Anna's Grouper Privileges*
+
+Anna was added as a direct member of `app:boardeffect:etc:boardeffect_admins`,
+but we can do better!  Responsibility for committee member management goes to
+the president's executive assistant, whoever that might be.
+
+#. Create a new reference group (role), `ref:roles:president_assistant`
+   for president executive assistant.
+#. Add Anna's account to `president_assistant`.
+
+This is better, but does Anna really need full admin privileges to
+`app:boardeffect`?  Probably only needs update / read.
+
+#. Add `ref:roles:president_assistant` to `app:boardeffect:etc:boardeffect_managers`.
+#. Remove Anna from `app:boardeffect:etc:boardeffect_admins`.
+
 
 
 .. _Grouper Deployment Guide: https://spaces.at.internet2.edu/display/Grouper/Grouper+Deployment+Guide+Work+-TIER+Program

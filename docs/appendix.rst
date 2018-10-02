@@ -174,3 +174,44 @@ At this point you can paste in the following script:
    makeStemInheritable(this, stem.name, view_group.name, 'read');
    admin_group.revokePriv(mgr_group.toMember().getSubject(), AccessPrivilege.UPDATE);
 
+.. _apdx-401.3.5-temp-access:
+
+-------------------------------
+401.3.1 Temporary Access Script 
+-------------------------------
+
+This script automatically creates an application folder along with
+security groups and permission rules.
+You must use the Grouper Shell (GSH) to run
+a short script.  To run GSH, you must connect to the GTE container
+that has the Grouper API installed:
+
+.. code-block:: bash
+
+   root# docker exec -it CONTAINER_NAME /bin/bash 
+   bash# cd bin
+   bash# gsh
+
+At this point you can paste in the following script:
+
+.. code-block:: groovy
+   :emphasize-lines: 2,3
+   :linenos:
+
+   // Script parameters
+   group_name = "app:boardeffect:ref:workroom_helpers";
+   numDays = 3;
+    
+   actAs = SubjectFinder.findRootSubject();
+   vpn_adhoc = getGroups(group_name)[0];
+   attribAssign = vpn_adhoc.getAttributeDelegate().addAttribute(RuleUtils.ruleAttributeDefName()).getAttributeAssign();
+   attribValueDelegate = attribAssign.getAttributeValueDelegate();
+   attribValueDelegate.assignValue(RuleUtils.ruleActAsSubjectSourceIdName(), actAs.getSourceId());
+   attribValueDelegate.assignValue(RuleUtils.ruleRunDaemonName(), "F");
+   attribValueDelegate.assignValue(RuleUtils.ruleActAsSubjectIdName(), actAs.getId());
+   attribValueDelegate.assignValue(RuleUtils.ruleCheckTypeName(), RuleCheckType.membershipAdd.name());
+   attribValueDelegate.assignValue(RuleUtils.ruleIfConditionEnumName(), RuleIfConditionEnum.thisGroupHasImmediateEnabledNoEndDateMembership.name());
+   attribValueDelegate.assignValue(RuleUtils.ruleThenEnumName(), RuleThenEnum.assignMembershipDisabledDaysForOwnerGroupId.name());
+   attribValueDelegate.assignValue(RuleUtils.ruleThenEnumArg0Name(), numDays.toString());
+   attribValueDelegate.assignValue(RuleUtils.ruleThenEnumArg1Name(), "T");
+
