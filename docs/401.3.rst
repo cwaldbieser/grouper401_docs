@@ -173,5 +173,52 @@ This is better, but does Anna really need full admin privileges to
 #. Remove Anna from `app:boardeffect:etc:boardeffect_admins`.
 
 
+----------------
+Exercise 401.3.7
+----------------
+
+*Global Committee reference groups*
+
+All working great-- new system request comes in with policy based on board
+committees.  Need to elevate app-specific ref groups to global ref groups.
+
+#. Create `ref:board` folder for board committee ref groups.
+#. Move `app:boardeffect:ref:cmt_fin` to `ref:board:cmt_fin`.
+
+    .. note::
+
+        The Board Effect policies are not impacted by moving the location of
+        the reference groups!
+
+#. Create `ref:board:etc` security folder.
+#. Create `ref:board:etc:board_managers` security group.
+#. Assign *UPDATE* and *READ* rights on reference groups to `board_managers`.
+#. Revoke *UPDATE* and *READ* rights of reference groups from `app:board_effect:etc:boardeffect_managers`.
+
+    .. warning::
+
+        Moving our reference groups did *not* remove the access we had granted
+        on them from application-specific security groups.  After moving a
+        reference group, it is good practive to review its permissions.
+
+#. Add `president_assistant` to `ref:board:etc:board_managers`.
+
+
+--------
+Epilogue
+--------
+
+New request comes in for four advisory councils. Each will have their own
+workroom in Board Effect.  Initially you are handed a spreadsheet with the
+council members and you import them into app-specific reference groups 
+(e.g. `app:boardeffect:ref:advisory_council_northeast`).  Later you find
+out that council membership is available in Banner, so you create loader
+jobs for those.  As it turns out, the spreadsheets were old and had the wrong
+members.  Thank goodness for loader jobs!  Alas, not all advisory council
+members have NetIDs.  To get them access we add them as sponsored accounts
+in COmanage.
+
+The End
+
 
 .. _Grouper Deployment Guide: https://spaces.at.internet2.edu/display/Grouper/Grouper+Deployment+Guide+Work+-TIER+Program
