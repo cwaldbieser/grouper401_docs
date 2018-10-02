@@ -2,3 +2,66 @@
 401.4 Untangling Legacy Access Polcies
 ======================================
 
+-------------------
+Learning Objectives
+-------------------
+
+* Learn to recognize tangled access control policies.
+* Use techniques to untangle co-mingled policies and cohorts.
+
+--------------
+Lab Components
+--------------
+
+* Grouper
+
+--------
+Overview
+--------
+
+A baseline of core services services are enabled by default for a broad range of
+community cohorts.  The current approach uses a hodge-podge of scripts and
+manual intervention to establish a group of "institutional people" that are
+granted access to a wide range of services.  The system can best be described as
+fragile, brittle, and difficult, if not impossible, to evolve and maintain.  In
+other words-- state of the industry.
+
+Last year your CIO came back from Internet2 Summit and declared that your
+institution is going to deploy TIER.  You've just managed to get the Grouper
+software up and running, when the head of your LMS group, Vicky, bursts into your
+office space and tells you that there are 50 visiting scholars showing up on
+campus tomorrow, and they all need access to the LMS for a campus-wide lecture
+series.
+
+Your co-worker had mentioned this to you before she left for her month long
+vacation.  She had told you she had taken care of creating the guest accounts,
+and not to worry.  You just need to grant access to the LMS when the time comes.
+No problem.
+
+But suddenly, you realize that access is controlled via the "institutional
+people" group in your Enterprise Directory Information Tree!  If you add the
+scholars to that group, they'll have access to everything on campus!
+
+Before panic sets in, you remember your Grouper training.  You'll need a little
+help from Vicky, but with Grouper, you've got this covered.  "OK, Vicky," you say
+in a calm, steady voice.  "Here's what I'm going to need your team to do ..."
+
+----------------
+Exercise 401.4.1
+----------------
+
+*Untangling Policies from Cohorts*
+
+The goal of this exercise is to grant access to the LMS for the 50 visiting
+scholar guest accounts *without* granting additional access to those accounts.
+Since access control does not happen in a vacuum, you'll need some minimal
+assistance from the LMS team.  Vicky's team can configure the LMS to point to a
+new group in the LDAP DIT, but that's all the help you'll get.
+
+The basic issue is that the legacy access control mechanisms are based on a 
+cohort of loosely defined "institutional people".  All your institution's services
+are using this cohort directly to determine who is supposed to have access.
+
+You'll need to use your new Grouper skills to resolve this issue.
+
+

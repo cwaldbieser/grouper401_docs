@@ -1,0 +1,26 @@
+
+==========================================================
+401.4 Untangling Legacy Access Policies - Example Solution
+==========================================================
+
+The follwing solution uses techniques demonstrated in the other 401 series
+labs in order to create an independent policy for the LMS service.
+
+#. Use Grouper Loader to import existing LDAP cohort group into a "community
+   members" reference group-- `ref:legacy:community_members`
+#. Add loader job to populate `communtiy_members` from
+   `cn=community_members,ou=groups,dc=example,dc=edu`.
+#. Run loader job to import members into reference group.
+#. Create a Grouper service folder for the LMS with a policy for LMS
+   authorization: `app:lms:lms_authorize|allow|deny`
+#. Add the "institutional people" reference group, `ref:community_members`,
+    to the allow policy for the LMS, `app:lms:lms_allow`.
+#. Create `app:lms:ref:visiting_scholars`.  Import the NetIDs for the visiting
+   scholors into this reference group.
+#. Add `visiting_scholars` to `lms_allow`.
+#. Provision this policy to a new group in the LDAP DIT that the LMS group can
+   use to allow access to the service.
+
+Congrats!  You are now a certified Grouper Guru associate level 1!  
+And remember nothing gets'em going like chum!
+
