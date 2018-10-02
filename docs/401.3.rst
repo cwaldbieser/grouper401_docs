@@ -102,5 +102,47 @@ Exercise 401.3.3
 Subject to role mapping in place and provisioners working, but how do we get
 reference groups for committees? Ann in President’s Office knows.
 
+----------------
+Exercise 401.3.4
+----------------
+
+*Distributed Reference Group Management*
+
+Amy maintains list of committee members. Use these to build application specific
+reference groups.
+
+#. Create `app:boardeffect:ref:cmt_fin`.
+#. Add `...:ref:cmt_fin` to `...:wr_cmt_fin_allow`.
+#. Add `ref:global_deny` to `...:wr_cmt_fin_deny`.
+#. Give Ann admin access to `app:boardeffect:ref` by adding account 
+   **amartinez410** to `app:boardeffect:etc:boardeffect_admins`.
+
+Log in as Ann Martinez (**amartinez410**).  Under *My Groups* you should see
+the reference groups and policies Ann can manage.
+
+----------------
+Exercise 401.3.5
+----------------
+
+*Committee member helpers*
+
+Joe Trustee is on committee, but Joe’s assistant also needs access to
+committee work group.
+
+#. Create app specific ref group `app:boardeffect:ref:cmt_fin_helpers`.
+#. Add `...:cmt_fin_helpers. to `...:wr_cmt_fin_allow`.
+
+.. note::
+
+    By *not* adding the helper subject to `app:boardeffect:ref:cmt_fin`,
+    we preserve the truth of the subject attributes.  Members of `cmt_fin`
+    *are* members of the Finance Committee.  The helpers are *not* members
+    of the committee, but they *are* granted access to the workroom by
+    the policy.
+
+This works great for specific assistants, but there are also general helpers
+who need access to all workrooms *temporarily* during board meetings.
+
+
 
 .. _Grouper Deployment Guide: https://spaces.at.internet2.edu/display/Grouper/Grouper+Deployment+Guide+Work+-TIER+Program
