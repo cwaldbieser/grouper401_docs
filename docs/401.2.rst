@@ -59,8 +59,8 @@ that are MFA enabled.  We choose the value
 
 There are 2 steps to accomplish this:
 
-#. Assign PSPNG attribute to `app:mfa:mfa_enabled` with a value of
-   `pspng_entitlements`.
+#. Assign PSPNG `provision_to` attribute (attribute def `provision_to_def`) 
+   to `app:mfa:mfa_enabled` with a value of `pspng_entitlements`.
 #. Configure PSPNG to provision this attribute.
 
    .. literalinclude:: examples/401.2.2-pspng-config.properties
