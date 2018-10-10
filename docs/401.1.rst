@@ -98,7 +98,7 @@ policy.*
    reference groups.
 
    * `ref:faculty`
-   * `ref:student`
+   * `ref:employees`
    * `app:vpn:ref:vpn_adhoc`
 
 #. Compare counts between ldap vpn group and `app:vpn:vpn_authorized`.
