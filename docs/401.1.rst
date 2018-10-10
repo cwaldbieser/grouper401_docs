@@ -226,7 +226,7 @@ Exercise 401.1.5
 ----------------
 
 *CISO is working on a investigation and wants to know if this particular NetID
-"xxxxx" has access to the VPN now or in the past 90 days?*
+"blee172" has access to the VPN now or in the past 90 days?*
 
 #. Navigate to `apps:vpn:vpn_authorized`.
 #. Search for so-and-so.
