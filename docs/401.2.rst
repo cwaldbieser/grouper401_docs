@@ -172,7 +172,10 @@ required by other policy*
 #. Create a new grouper security group, `app:mfa:etc:mfa_opt_in_access|allow|deny`.
 #. Add faculty, staff, and student reference groups to
    `app:mfa:etc:mfa_opt_in_access_allow`.
-#. Add `app:mfa:mfa_required` to `mfa_opt_in_access_deny`.
+#. Create `app:mfa:ref:mfa_required` and copy your required members from the
+   `mfa_enabled_allow` policy to `mfa_required`.  
+#. Add `mfa_required` to `mfa_enabled_allow` and remove the redundant members.
+#. Add `app:mfa:ref:mfa_required` to `mfa_opt_in_access_deny`.
 #. Configure `mfa_opt_in` privileges to grant `mfa_opt_in_access` *OptIn* and
    *OptOut* rights.
 
