@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'GTE401 Docs'
+project = 'GTE401'
 copyright = '2018, Carl Waldbieser'
 author = 'Carl Waldbieser'
 
