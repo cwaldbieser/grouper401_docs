@@ -117,7 +117,7 @@ At this point you can paste in the following script:
 
    // SET THESE
    parent_stem_path = "app";
-   app_extension = "board_effect";
+   app_extension = "boardeffect";
    app_name = "Board Effect";
     
     
