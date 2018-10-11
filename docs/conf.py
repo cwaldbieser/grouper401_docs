@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'GTE401'
-copyright = '2018, Carl Waldbieser'
+copyright = ''
 author = 'Carl Waldbieser'
 
 # The short X.Y version
